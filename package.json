@@ -1,0 +1,16 @@
+{
+  "name": "vueduck-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.23.0",
+  "scripts": {
+    "dev": "pnpm build && pnpm --parallel -F vueduck-ui -F docs dev",
+    "build": "pnpm -F vueduck-ui build",
+    "test": "pnpm -F vueduck-ui test",
+    "typecheck": "pnpm -F vueduck-ui typecheck",
+    "docs:dev": "pnpm -F docs dev",
+    "docs:build": "pnpm build && pnpm -F docs build",
+    "play:vue": "pnpm -F playground-vue dev",
+    "play:nuxt": "pnpm -F playground-nuxt dev"
+  }
+}

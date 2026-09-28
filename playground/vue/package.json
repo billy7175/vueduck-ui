@@ -1,0 +1,8 @@
+{
+  "name": "playground-vue",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build" },
+  "dependencies": { "vue": "^3.5.43", "vueduck-ui": "workspace:*" },
+  "devDependencies": { "@vitejs/plugin-vue": "^6.0.9", "vite": "^8.3.1" }
+}

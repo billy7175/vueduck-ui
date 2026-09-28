@@ -1,0 +1,80 @@
+/*
+ * vueduck design tokens.
+ * Override any of these on :root (or a scoped element) to theme the library.
+ * Dark mode: add the `dark` class to <html> (same convention as Nuxt UI / Element Plus).
+ *
+ * Only base values live here. Derived values (hover colors, radius sizes, focus ring) are
+ * computed inside each component from the base tokens, because a `var()` inside a custom
+ * property resolves where it is declared: defining `--vd-radius-md: var(--vd-radius)` on
+ * :root would ignore a `--vd-radius` override on a nested element.
+ * They can still be pinned explicitly: --vd-color-primary-hover, --vd-color-danger-hover,
+ * --vd-radius-sm / -md / -lg, --vd-focus-ring.
+ */
+:root {
+  /* Brand */
+  --vd-color-primary: #18181b;
+  --vd-color-primary-contrast: #fafafa;
+
+  /* Semantic */
+  --vd-color-success: #16a34a;
+  --vd-color-warning: #d97706;
+  --vd-color-danger: #dc2626;
+  --vd-color-danger-contrast: #ffffff;
+  --vd-color-info: #2563eb;
+
+  /* Neutral */
+  --vd-color-bg: #ffffff;
+  --vd-color-bg-muted: #f4f4f5;
+  --vd-color-bg-hover: #ececef;
+  --vd-color-border: #e4e4e7;
+  --vd-color-input: #e4e4e7;
+  --vd-color-text: #09090b;
+  --vd-color-text-muted: #71717a;
+  --vd-color-ring: #a1a1aa;
+
+  /* Typography (components inherit the page font unless --vd-font-family is set) */
+  --vd-font-size-xs: 0.75rem;
+  --vd-font-size-sm: 0.875rem;
+  --vd-font-size-md: 0.875rem;
+  --vd-font-size-lg: 1rem;
+  --vd-font-weight-medium: 500;
+
+  /* Shape */
+  --vd-radius: 0.5rem;
+  --vd-radius-full: 9999px;
+
+  /* Spacing */
+  --vd-space-1: 0.25rem;
+  --vd-space-2: 0.5rem;
+  --vd-space-3: 0.75rem;
+  --vd-space-4: 1rem;
+  --vd-space-5: 1.25rem;
+  --vd-space-6: 1.5rem;
+
+  /* Elevation */
+  --vd-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --vd-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --vd-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  /* Motion */
+  --vd-duration: 150ms;
+  --vd-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.dark,
+.vd-dark {
+  --vd-color-primary: #fafafa;
+  --vd-color-primary-contrast: #18181b;
+  --vd-color-danger: #e5484d;
+
+  --vd-color-bg: #09090b;
+  --vd-color-bg-muted: #27272a;
+  --vd-color-bg-hover: #303036;
+  --vd-color-border: #27272a;
+  --vd-color-input: #3f3f46;
+  --vd-color-text: #fafafa;
+  --vd-color-text-muted: #a1a1aa;
+  --vd-color-ring: #71717a;
+
+  --vd-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+}

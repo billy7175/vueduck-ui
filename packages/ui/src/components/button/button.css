@@ -1,0 +1,130 @@
+.vd-button {
+  --_h: 2.25rem;
+  --_px: var(--vd-space-4);
+  --_gap: var(--vd-space-2);
+  --_fs: var(--vd-font-size-sm);
+  --_icon: 1rem;
+
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--_gap);
+  height: var(--_h);
+  padding: 0 var(--_px);
+  border: 1px solid transparent;
+  border-radius: var(--vd-radius-md, var(--vd-radius));
+  font-family: var(--vd-font-family, inherit);
+  font-size: var(--_fs);
+  font-weight: var(--vd-font-weight-medium);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition-property: color, background-color, border-color, box-shadow, opacity;
+  transition-duration: var(--vd-duration);
+  transition-timing-function: var(--vd-easing);
+}
+.vd-button:focus-visible {
+  border-color: var(--vd-color-ring);
+  box-shadow: var(--vd-focus-ring, 0 0 0 3px color-mix(in srgb, var(--vd-color-ring) 50%, transparent));
+}
+.vd-button.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.vd-button.is-loading {
+  cursor: progress;
+}
+
+/* Sizes */
+.vd-button--sm { --_h: 2rem; --_px: var(--vd-space-3); --_gap: 0.375rem; --_fs: var(--vd-font-size-sm); }
+.vd-button--lg { --_h: 2.5rem; --_px: var(--vd-space-6); --_fs: var(--vd-font-size-sm); }
+.vd-button--block { display: flex; width: 100%; }
+
+/* Variants */
+.vd-button--solid {
+  background: var(--vd-color-primary);
+  color: var(--vd-color-primary-contrast);
+  box-shadow: var(--vd-shadow-xs);
+}
+.vd-button--solid:hover {
+  background: var(--vd-color-primary-hover, color-mix(in srgb, var(--vd-color-primary) 88%, var(--vd-color-bg)));
+}
+
+.vd-button--secondary {
+  background: var(--vd-color-bg-muted);
+  color: var(--vd-color-text);
+  box-shadow: var(--vd-shadow-xs);
+}
+.vd-button--secondary:hover { background: var(--vd-color-bg-hover); }
+
+.vd-button--outline {
+  background: var(--vd-color-bg);
+  border-color: var(--vd-color-input);
+  color: var(--vd-color-text);
+  box-shadow: var(--vd-shadow-xs);
+}
+.vd-button--outline:hover { background: var(--vd-color-bg-muted); }
+
+.vd-button--ghost {
+  background: transparent;
+  color: var(--vd-color-text);
+}
+.vd-button--ghost:hover { background: var(--vd-color-bg-muted); }
+
+.vd-button--danger {
+  background: var(--vd-color-danger);
+  color: var(--vd-color-danger-contrast);
+  box-shadow: var(--vd-shadow-xs);
+}
+.vd-button--danger:hover {
+  background: var(--vd-color-danger-hover, color-mix(in srgb, var(--vd-color-danger) 88%, var(--vd-color-bg)));
+}
+.vd-button--danger:focus-visible {
+  border-color: var(--vd-color-danger);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vd-color-danger) 25%, transparent);
+}
+
+.vd-button--link {
+  height: auto;
+  padding: 0;
+  background: transparent;
+  color: var(--vd-color-text);
+  text-underline-offset: 4px;
+}
+.vd-button--link:hover { text-decoration: underline; }
+
+/* Parts */
+.vd-button__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+/* every icon inside the button (slot, icon-only, or wrapped) — :where keeps it overridable */
+:where(.vd-button) svg {
+  width: var(--_icon);
+  height: var(--_icon);
+  flex-shrink: 0;
+}
+.vd-button__spinner {
+  width: var(--_icon);
+  height: var(--_icon);
+  flex-shrink: 0;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--vd-radius-full);
+  opacity: 0.8;
+  animation: vd-spin 0.7s linear infinite;
+}
+@keyframes vd-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vd-button { transition: none; }
+  .vd-button__spinner { animation-duration: 1.5s; }
+}

@@ -1,0 +1,240 @@
+/* shadcn-like neutral (zinc) theme for VitePress */
+
+/*
+ * Accent palette — the ONLY non-neutral colors on the site.
+ * Six hues (from the "왜 vueduck인가요" cards), each in two roles:
+ *   --accent-X       500 shade: icons, lines, dots, tints (decoration)
+ *   --accent-X-text  text shade: >= 4.5:1 on the page background (700/600 light, 400 dark)
+ * Exceptions: --brand-vue / --brand-nuxt (official logos), Shiki code colors.
+ */
+:root {
+  --accent-sky: #0ea5e9;
+  --accent-violet: #8b5cf6;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+  --accent-amber: #f59e0b;
+  --accent-blue: #3b82f6;
+
+  --accent-sky-text: #0369a1;
+  --accent-violet-text: #7c3aed;
+  --accent-emerald-text: #047857;
+  --accent-rose-text: #e11d48;
+  --accent-amber-text: #b45309;
+  --accent-blue-text: #2563eb;
+
+  --brand-vue: #42b883;
+  --brand-nuxt: #00dc82;
+
+  /* neutral surface that sits above bg-soft (segmented control thumb) */
+  --surface-raised: #ffffff;
+}
+.dark {
+  --accent-sky-text: #38bdf8;
+  --accent-violet-text: #a78bfa;
+  --accent-emerald-text: #34d399;
+  --accent-rose-text: #fb7185;
+  --accent-amber-text: #fbbf24;
+  --accent-blue-text: #60a5fa;
+
+  --surface-raised: #27272a;
+}
+
+:root {
+  --vp-font-family-base: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #fafafa;
+  --vp-c-bg-soft: #f4f4f5;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-text-1: #09090b;
+  --vp-c-text-2: #52525b;
+  --vp-c-text-3: #a1a1aa;
+  --vp-c-divider: #e4e4e7;
+  --vp-c-border: #e4e4e7;
+  --vp-c-gutter: #e4e4e7;
+
+  --vp-c-brand-1: #09090b;
+  --vp-c-brand-2: #27272a;
+  --vp-c-brand-3: #18181b;
+  --vp-c-brand-soft: #f4f4f5;
+  --vp-button-brand-text: #fafafa;
+  --vp-button-brand-hover-text: #fafafa;
+  --vp-button-brand-active-text: #fafafa;
+
+  --vp-code-block-bg: #fafafa;
+  --vp-code-bg: #f4f4f5;
+  --vp-code-color: #09090b;
+  --vp-custom-block-tip-bg: color-mix(in srgb, var(--accent-blue) 8%, var(--vp-c-bg));
+  --vp-custom-block-tip-border: color-mix(in srgb, var(--accent-blue) 30%, transparent);
+  --vp-custom-block-tip-text: var(--accent-blue-text);
+  --vp-custom-block-tip-code-bg: color-mix(in srgb, var(--accent-blue) 15%, transparent);
+  --vp-custom-block-warning-bg: color-mix(in srgb, var(--accent-amber) 8%, var(--vp-c-bg));
+  --vp-custom-block-warning-border: color-mix(in srgb, var(--accent-amber) 30%, transparent);
+  --vp-custom-block-warning-text: var(--accent-amber-text);
+  --vp-custom-block-warning-code-bg: color-mix(in srgb, var(--accent-amber) 15%, transparent);
+
+  --demo-dot: #e4e4e7;
+}
+
+.dark {
+  --vp-c-bg: #09090b;
+  --vp-c-bg-alt: #0c0c0e;
+  --vp-c-bg-soft: #18181b;
+  --vp-c-bg-elv: #111113;
+  --vp-c-text-1: #fafafa;
+  --vp-c-text-2: #a1a1aa;
+  --vp-c-text-3: #52525b;
+  --vp-c-divider: #27272a;
+  --vp-c-border: #27272a;
+  --vp-c-gutter: #18181b;
+
+  --vp-c-brand-1: #fafafa;
+  --vp-c-brand-2: #e4e4e7;
+  --vp-c-brand-3: #fafafa;
+  --vp-c-brand-soft: #27272a;
+  --vp-button-brand-text: #09090b;
+  --vp-button-brand-hover-text: #09090b;
+  --vp-button-brand-active-text: #09090b;
+
+  --vp-code-block-bg: #111113;
+  --vp-code-bg: #27272a;
+  --vp-code-color: #fafafa;
+
+  --demo-dot: #1f1f23;
+}
+
+/* Typography */
+body {
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+.vp-doc h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.vp-doc h2 {
+  margin-top: 56px;
+  padding-top: 0;
+  border-top: 0;
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+.vp-doc h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+.vp-doc p,
+.vp-doc li {
+  color: var(--vp-c-text-2);
+}
+/* first paragraph under the title reads as the page summary */
+.vp-doc h1 + p {
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+/* bold text stands out from the gray body copy */
+.vp-doc strong {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+/* custom blocks: tinted card with a left accent */
+.vp-doc .custom-block {
+  border-left-width: 3px;
+  border-radius: 10px;
+}
+.vp-doc .custom-block .custom-block-title {
+  font-weight: 700;
+}
+.vp-doc .custom-block p,
+.vp-doc .custom-block li,
+.vp-doc .custom-block strong {
+  color: inherit;
+}
+.vp-doc a {
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--vp-c-text-3);
+}
+.vp-doc a:hover {
+  text-decoration-color: var(--vp-c-text-1);
+}
+.vp-doc .demo a.vd-button {
+  text-decoration: none;
+}
+.vp-doc :not(pre) > code {
+  font-size: 0.85em;
+  font-weight: 500;
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+}
+
+/* Code blocks: bordered, like shadcn */
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+}
+.vp-code-group .tabs {
+  border: 1px solid var(--vp-c-divider);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+}
+.vp-code-group div[class*='language-'] {
+  border-radius: 0 0 12px 12px;
+}
+
+/* Tables */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.vp-doc tr {
+  background: transparent !important;
+}
+.vp-doc th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+.vp-doc th,
+.vp-doc td {
+  border: 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+.vp-doc tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Chrome */
+.VPNavBar.has-sidebar .content-body,
+.VPNavBar:not(.home) {
+  border-bottom-color: var(--vp-c-divider);
+}
+.VPNavBar .divider-line {
+  background-color: var(--vp-c-divider) !important;
+}
+.VPNavBarTitle .title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 13px;
+  font-weight: 600;
+}
+.VPSidebarItem .link .text {
+  font-size: 14px;
+}
+.VPSidebarItem.is-active > .item .link > .text {
+  font-weight: 600;
+}
