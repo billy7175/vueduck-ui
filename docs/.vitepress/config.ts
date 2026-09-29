@@ -5,6 +5,15 @@ export default defineConfig({
   description: 'Vue 3 & Nuxt를 위한 깔끔하고 접근성 있는 컴포넌트 라이브러리',
   lang: 'ko-KR',
   cleanUrls: true,
+  markdown: {
+    container: {
+      tipLabel: '팁',
+      infoLabel: '정보',
+      warningLabel: '주의',
+      dangerLabel: '위험',
+      detailsLabel: '자세히',
+    },
+  },
   appearance: true,
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo-light.svg' }],

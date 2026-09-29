@@ -65,14 +65,24 @@
   --vp-code-block-bg: #fafafa;
   --vp-code-bg: #f4f4f5;
   --vp-code-color: #09090b;
-  --vp-custom-block-tip-bg: color-mix(in srgb, var(--accent-blue) 8%, var(--vp-c-bg));
-  --vp-custom-block-tip-border: color-mix(in srgb, var(--accent-blue) 30%, transparent);
-  --vp-custom-block-tip-text: var(--accent-blue-text);
-  --vp-custom-block-tip-code-bg: color-mix(in srgb, var(--accent-blue) 15%, transparent);
+  /* callouts follow the GitHub alert convention: info=blue, tip=green, warning=amber, danger=rose */
+  --vp-custom-block-info-bg: color-mix(in srgb, var(--accent-blue) 8%, var(--vp-c-bg));
+  --vp-custom-block-info-border: color-mix(in srgb, var(--accent-blue) 30%, transparent);
+  --vp-custom-block-info-text: var(--accent-blue-text);
+  --vp-custom-block-info-code-bg: color-mix(in srgb, var(--accent-blue) 15%, transparent);
+  --vp-custom-block-tip-bg: color-mix(in srgb, var(--accent-emerald) 8%, var(--vp-c-bg));
+  --vp-custom-block-tip-border: color-mix(in srgb, var(--accent-emerald) 30%, transparent);
+  --vp-custom-block-tip-text: var(--accent-emerald-text);
+  --vp-custom-block-tip-code-bg: color-mix(in srgb, var(--accent-emerald) 15%, transparent);
   --vp-custom-block-warning-bg: color-mix(in srgb, var(--accent-amber) 8%, var(--vp-c-bg));
   --vp-custom-block-warning-border: color-mix(in srgb, var(--accent-amber) 30%, transparent);
   --vp-custom-block-warning-text: var(--accent-amber-text);
   --vp-custom-block-warning-code-bg: color-mix(in srgb, var(--accent-amber) 15%, transparent);
+  /* no tint for danger: rose text on a rose tint drops below 4.5:1 in light mode */
+  --vp-custom-block-danger-bg: var(--vp-c-bg);
+  --vp-custom-block-danger-border: color-mix(in srgb, var(--accent-rose) 30%, transparent);
+  --vp-custom-block-danger-text: var(--accent-rose-text);
+  --vp-custom-block-danger-code-bg: color-mix(in srgb, var(--accent-rose) 15%, transparent);
 
   --demo-dot: #e4e4e7;
 }
@@ -153,6 +163,10 @@ body {
 .vp-doc .custom-block li,
 .vp-doc .custom-block strong {
   color: inherit;
+}
+.vp-doc .custom-block a {
+  color: inherit;
+  text-decoration-color: currentColor;
 }
 .vp-doc a {
   font-weight: 500;
