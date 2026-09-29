@@ -34,6 +34,22 @@ describe('VdButton', () => {
     expect(onClick).not.toHaveBeenCalled()
   })
 
+  it('keeps loading visually distinct from disabled', () => {
+    const loading = mount(Button, { props: { loading: true } })
+    expect(loading.classes()).toContain('is-loading')
+    expect(loading.classes()).not.toContain('is-disabled')
+
+    const disabled = mount(Button, { props: { disabled: true } })
+    expect(disabled.classes()).toContain('is-disabled')
+    expect(disabled.attributes('disabled')).toBeDefined()
+  })
+
+  it('blocks non-native elements while loading via aria-disabled', () => {
+    const wrapper = mount(Button, { props: { as: 'a', loading: true }, attrs: { href: '/x' } })
+    expect(wrapper.attributes('aria-disabled')).toBe('true')
+    expect(wrapper.attributes('tabindex')).toBe('-1')
+  })
+
   it('renders as a link with aria-disabled instead of disabled', () => {
     const wrapper = mount(Button, { props: { as: 'a', disabled: true }, attrs: { href: '/x' } })
     expect(wrapper.element.tagName).toBe('A')

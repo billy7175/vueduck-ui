@@ -47,7 +47,7 @@ const isNativeButton = computed(() => props.as === 'button')
       'vd-button',
       `vd-button--${variant}`,
       `vd-button--${size}`,
-      { 'vd-button--block': block, 'is-loading': loading, 'is-disabled': isDisabled },
+      { 'vd-button--block': block, 'is-loading': loading, 'is-disabled': disabled },
     ]"
   >
     <span v-if="loading" class="vd-button__spinner" aria-hidden="true" />

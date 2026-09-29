@@ -22,6 +22,7 @@
   letter-spacing: -0.005em;
   white-space: nowrap;
   text-decoration: none;
+  background: var(--_bg, transparent);
   cursor: pointer;
   user-select: none;
   outline: none;
@@ -33,13 +34,17 @@
   border-color: var(--vd-color-ring);
   box-shadow: var(--vd-focus-ring, 0 0 0 3px color-mix(in srgb, var(--vd-color-ring) 50%, transparent));
 }
+/* disabled looks faded; loading keeps full color and shows the spinner instead */
 .vd-button.is-disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  pointer-events: none;
 }
 .vd-button.is-loading {
   cursor: progress;
+}
+/* native <button> is blocked by its disabled attribute; other elements (as="a") need this */
+.vd-button[aria-disabled='true'] {
+  pointer-events: none;
 }
 
 /* Sizes */
@@ -47,44 +52,59 @@
 .vd-button--lg { --_h: 2.5rem; --_px: var(--vd-space-6); --_fs: var(--vd-font-size-sm); }
 .vd-button--block { display: flex; width: 100%; }
 
-/* Variants */
-.vd-button--solid {
-  background: var(--vd-color-primary);
-  color: var(--vd-color-primary-contrast);
-  box-shadow: var(--vd-shadow-xs);
-}
-.vd-button--solid:hover {
-  background: var(--vd-color-primary-hover, color-mix(in srgb, var(--vd-color-primary) 88%, var(--vd-color-bg)));
-}
-
-.vd-button--secondary {
-  background: var(--vd-color-bg-muted);
-  color: var(--vd-color-text);
-  box-shadow: var(--vd-shadow-xs);
-}
-.vd-button--secondary:hover { background: var(--vd-color-bg-hover); }
-
-.vd-button--outline {
-  background: var(--vd-color-bg);
-  border-color: var(--vd-color-input);
-  color: var(--vd-color-text);
-  box-shadow: var(--vd-shadow-xs);
-}
-.vd-button--outline:hover { background: var(--vd-color-bg-muted); }
-
-.vd-button--ghost {
-  background: transparent;
-  color: var(--vd-color-text);
-}
-.vd-button--ghost:hover { background: var(--vd-color-bg-muted); }
-
+/*
+ * Variants only declare their resting color (--_bg) and which way hover/press shifts it (--_toward).
+ * One rule below computes hover and press for all of them:
+ *   filled  (solid, danger)               → toward the page background, 12% hover / 20% press
+ *   neutral (secondary, outline, ghost)   → toward the text color,       6% hover / 10% press
+ */
+.vd-button--solid,
 .vd-button--danger {
-  background: var(--vd-color-danger);
-  color: var(--vd-color-danger-contrast);
+  --_hover: 12%;
+  --_active: 20%;
+  --_toward: var(--vd-color-bg);
   box-shadow: var(--vd-shadow-xs);
 }
-.vd-button--danger:hover {
-  background: var(--vd-color-danger-hover, color-mix(in srgb, var(--vd-color-danger) 88%, var(--vd-color-bg)));
+.vd-button--solid {
+  --_bg: var(--vd-color-primary);
+  --_bg-hover: var(--vd-color-primary-hover);
+  color: var(--vd-color-primary-contrast);
+}
+.vd-button--danger {
+  --_bg: var(--vd-color-danger);
+  --_bg-hover: var(--vd-color-danger-hover);
+  color: var(--vd-color-danger-contrast);
+}
+
+.vd-button--secondary,
+.vd-button--outline,
+.vd-button--ghost {
+  --_hover: 6%;
+  --_active: 10%;
+  --_toward: var(--vd-color-text);
+  color: var(--vd-color-text);
+}
+.vd-button--secondary {
+  --_bg: var(--vd-color-bg-muted);
+  box-shadow: var(--vd-shadow-xs);
+}
+.vd-button--outline {
+  --_bg: var(--vd-color-bg);
+  border-color: var(--vd-color-input);
+  box-shadow: var(--vd-shadow-xs);
+}
+.vd-button--ghost {
+  --_bg: transparent;
+}
+
+/* hover only where a real pointer exists, so it doesn't stick after a tap on touch screens */
+@media (hover: hover) {
+  .vd-button:hover:not(.is-disabled, .is-loading, .vd-button--link) {
+    background: var(--_bg-hover, color-mix(in srgb, var(--_bg), var(--_toward) var(--_hover)));
+  }
+}
+.vd-button:active:not(.is-disabled, .is-loading, .vd-button--link) {
+  background: color-mix(in srgb, var(--_bg), var(--_toward) var(--_active));
 }
 .vd-button--danger:focus-visible {
   border-color: var(--vd-color-danger);
@@ -94,11 +114,16 @@
 .vd-button--link {
   height: auto;
   padding: 0;
-  background: transparent;
   color: var(--vd-color-text);
   text-underline-offset: 4px;
 }
-.vd-button--link:hover { text-decoration: underline; }
+@media (hover: hover) {
+  .vd-button--link:hover:not(.is-disabled, .is-loading) { text-decoration: underline; }
+}
+.vd-button--link:active:not(.is-disabled, .is-loading) {
+  text-decoration: underline;
+  opacity: 0.8;
+}
 
 /* Parts */
 .vd-button__icon {

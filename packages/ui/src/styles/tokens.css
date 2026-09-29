@@ -25,7 +25,6 @@
   /* Neutral */
   --vd-color-bg: #ffffff;
   --vd-color-bg-muted: #f4f4f5;
-  --vd-color-bg-hover: #ececef;
   --vd-color-border: #e4e4e7;
   --vd-color-input: #e4e4e7;
   --vd-color-text: #09090b;
@@ -69,7 +68,6 @@
 
   --vd-color-bg: #09090b;
   --vd-color-bg-muted: #27272a;
-  --vd-color-bg-hover: #303036;
   --vd-color-border: #27272a;
   --vd-color-input: #3f3f46;
   --vd-color-text: #fafafa;

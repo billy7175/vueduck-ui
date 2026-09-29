@@ -121,7 +121,7 @@ import { ArrowRight, Mail, Trash2 } from '@lucide/vue'
 
 ## 로딩
 
-`loading` 상태에서는 스피너가 앞쪽 아이콘 자리에 표시되고, 클릭이 막히며 `aria-busy="true"`가 붙습니다.
+`loading` 상태에서는 스피너가 앞쪽 아이콘 자리에 표시되고, 클릭이 막히며 `aria-busy="true"`가 붙습니다. 비활성과 달리 **흐려지지 않아서** 로딩 중인 버튼과 누를 수 없는 버튼이 구분됩니다.
 
 <Demo>
   <VdButton :loading="loading" @click="save">{{ loading ? '저장 중…' : '저장하기' }}</VdButton>
@@ -147,6 +147,8 @@ async function save() {
 </Demo>
 
 ## 비활성
+
+`disabled` 버튼은 반투명하게 흐려지고, 마우스를 올리거나 눌러도 색이 바뀌지 않습니다.
 
 <Demo>
   <VdButton disabled>Solid</VdButton>

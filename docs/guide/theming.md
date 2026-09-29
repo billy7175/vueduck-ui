@@ -38,6 +38,17 @@ hover 색, 모서리 크기, 포커스 링은 기본 토큰에서 **컴포넌트
 | `--vd-radius-sm` / `-md` / `-lg` | `--vd-radius` −2px / 그대로 / +4px |
 | `--vd-focus-ring` | `--vd-color-ring` 50% 투명도, 3px |
 
+### 버튼의 hover · 누름 효과 규칙
+
+모든 버튼이 같은 규칙으로 색을 계산하므로, 토큰만 바꿔도 효과가 자연스럽게 따라옵니다.
+
+| 버튼 | 마우스 올림 | 누름 |
+| --- | --- | --- |
+| 채운 버튼 (`solid`, `danger`) | 배경색 쪽으로 12% | 20% |
+| 중립 버튼 (`secondary`, `outline`, `ghost`) | 글자색 쪽으로 6% | 10% |
+
+터치 기기에서는 마우스 올림 효과가 적용되지 않아, 탭한 뒤 색이 남아 있지 않습니다.
+
 ## 다크 모드
 
 `<html>`에 `dark` 클래스를 붙이면 다크 토큰이 적용됩니다. Nuxt UI, Element Plus와 같은 방식이라 `@nuxtjs/color-mode`나 VueUse `useDark()`와 그대로 연동됩니다.
