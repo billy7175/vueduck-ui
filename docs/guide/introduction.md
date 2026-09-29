@@ -14,7 +14,7 @@
 
 | 분류 | 컴포넌트 |
 | --- | --- |
-| Form & Action | **Button** (사용 가능), Input, Textarea, Checkbox, Radio, Switch, Select, FormField |
+| Form & Action | **Button**, **Input** (사용 가능), Textarea, Checkbox, Radio, Switch, Select, FormField |
 | 피드백 & 오버레이 | Modal, Toast, Tooltip, Alert, Spinner |
 | 데이터 표시 | Badge, Card, Avatar, Tag, Divider, Skeleton, Progress, Table, Empty |
 | 내비게이션 | Tabs, Accordion, Dropdown Menu, Pagination, Breadcrumb, Popover |

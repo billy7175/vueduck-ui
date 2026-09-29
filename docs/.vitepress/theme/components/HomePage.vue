@@ -103,7 +103,7 @@ const features = [
 ]
 
 const roadmap: { group: string; items: [string, boolean][] }[] = [
-  { group: 'Form & Action', items: [['Button', true], ['Input', false], ['Textarea', false], ['Checkbox', false], ['Radio', false], ['Switch', false], ['Select', false], ['FormField', false]] },
+  { group: 'Form & Action', items: [['Button', true], ['Input', true], ['Textarea', false], ['Checkbox', false], ['Radio', false], ['Switch', false], ['Select', false], ['FormField', false]] },
   { group: '피드백 & 오버레이', items: [['Modal', false], ['Toast', false], ['Tooltip', false], ['Alert', false], ['Spinner', false]] },
   { group: '데이터 표시', items: [['Badge', false], ['Card', false], ['Avatar', false], ['Tag', false], ['Divider', false], ['Skeleton', false], ['Progress', false], ['Table', false], ['Empty', false]] },
   { group: '내비게이션', items: [['Tabs', false], ['Accordion', false], ['Dropdown Menu', false], ['Pagination', false], ['Breadcrumb', false], ['Popover', false]] },
@@ -115,8 +115,8 @@ const roadmap: { group: string; items: [string, boolean][] }[] = [
   <div class="home">
     <!-- Hero -->
     <section class="hero">
-      <a class="pill" :href="withBase('/components/button')">
-        <span class="pill-dot" />첫 번째 컴포넌트 Button 공개
+      <a class="pill" :href="withBase('/components/input')">
+        <span class="pill-dot" />새 컴포넌트 Input 추가
         <ArrowRight :size="14" />
       </a>
       <h1>Vue와 Nuxt를 위한<br />깔끔한 컴포넌트</h1>

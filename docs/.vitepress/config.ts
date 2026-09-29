@@ -40,13 +40,17 @@ export default defineConfig({
             { text: '소개', link: '/guide/introduction' },
             { text: '설치', link: '/guide/installation' },
             { text: '테마', link: '/guide/theming' },
+            { text: '아이콘', link: '/guide/icons' },
           ],
         },
       ],
       '/components/': [
         {
           text: 'Form & Action',
-          items: [{ text: 'Button', link: '/components/button' }],
+          items: [
+            { text: 'Button', link: '/components/button' },
+            { text: 'Input', link: '/components/input' },
+          ],
         },
       ],
     },
