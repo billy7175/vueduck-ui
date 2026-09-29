@@ -1,0 +1,107 @@
+/* Same heights, radius, and focus ring as .vd-button so they line up side by side */
+.vd-input {
+  --_h: 2.25rem;
+  --_px: var(--vd-space-3);
+  --_fs: var(--vd-font-size-sm);
+  --_ring: var(--vd-color-ring);
+
+  box-sizing: border-box; /* border inside the height, like a native <button> */
+  display: flex;
+  align-items: center;
+  gap: var(--vd-space-2);
+  height: var(--_h);
+  padding: 0 var(--_px);
+  border: 1px solid var(--vd-color-input);
+  border-radius: var(--vd-radius-md, var(--vd-radius));
+  background: var(--vd-color-bg);
+  box-shadow: var(--vd-shadow-xs);
+  color: var(--vd-color-text);
+  font-family: var(--vd-font-family, inherit);
+  font-size: var(--_fs);
+  cursor: text;
+  transition-property: border-color, box-shadow, opacity;
+  transition-duration: var(--vd-duration);
+  transition-timing-function: var(--vd-easing);
+}
+.vd-input:focus-within {
+  border-color: var(--_ring);
+  box-shadow: var(--vd-focus-ring, 0 0 0 3px color-mix(in srgb, var(--_ring) 50%, transparent));
+}
+.vd-input.is-invalid {
+  --_ring: var(--vd-color-danger);
+  border-color: var(--vd-color-danger);
+}
+.vd-input.is-invalid:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vd-color-danger) 25%, transparent);
+}
+.vd-input.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.vd-input.is-readonly {
+  background: var(--vd-color-bg-muted);
+}
+
+/* Sizes */
+.vd-input--sm { --_h: 2rem; --_px: 0.625rem; }
+.vd-input--lg { --_h: 2.5rem; --_px: var(--vd-space-4); }
+
+/* Parts */
+.vd-input__control {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.vd-input__control::placeholder {
+  color: var(--vd-color-text-muted);
+}
+.vd-input__control:disabled {
+  cursor: not-allowed;
+}
+.vd-input__affix {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--vd-color-text-muted);
+}
+:where(.vd-input) svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.vd-input__clear {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--vd-radius-full);
+  background: transparent;
+  color: var(--vd-color-text-muted);
+  cursor: pointer;
+  transition: background-color var(--vd-duration) var(--vd-easing), color var(--vd-duration) var(--vd-easing);
+}
+.vd-input__clear > svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+/* same neutral hover rule as the buttons: shift toward text color */
+@media (hover: hover) {
+  .vd-input__clear:hover {
+    color: var(--vd-color-text);
+    background: color-mix(in srgb, transparent, var(--vd-color-text) 6%);
+  }
+}
+.vd-input__clear:focus-visible {
+  outline: 2px solid var(--vd-color-ring);
+  outline-offset: 1px;
+}
